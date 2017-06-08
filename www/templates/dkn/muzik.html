@@ -1,0 +1,54 @@
+<ion-view title="Dükkan" align-title="center">
+
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+  </ion-nav-bar>
+  <ion-content class="has-header gem-ion-content feed">
+
+<h3>Müzik</h3>
+
+    <ion-refresher
+      pulling-text="Yenilemek için çekin..."
+      on-refresh="doRefresh()" >
+    </ion-refresher >
+
+    <div class="item item-input-inset">
+
+    </div>
+    <div ng-repeat="result in feed.results" class="padding">
+      <div class="news-media">
+        <img ng-src="{{ result.Link }}" alt="" class="fluid-image">
+        <div class="media-social-stats">
+
+        </div>
+      </div>
+
+
+      <div class="news-item" >
+        <div class="news-thumb">
+          <img ng-src="{{ result.ProfilePic }}" alt="" class="img">
+        </div>
+        <div class="news-content">
+          <span class="news-comment-summary">
+            <i class="icon ion-ios-telephone" ng-if="result.Telefon.length>0"></i><a style="text-decoration: none" href="tel:{{result.Telefon}}">{{result.Telefon}}</a>
+
+           </span>
+          <h4>{{ result.Ad }}</h4>
+          <h4 ng-if="result.Ad.length<3">{{ result.Email | getname}}</h4>
+
+          <div class="gem-tiny-text news-item-stats">
+            <i class="icon ion-email"></i> <a style="text-decoration: none" href="mailto:{{result.Email}}">{{result.Email}}</a>
+
+          </div>
+        </div>
+        <div class="news-more-action3" style="top: -10px; bottom: auto;top: -20px;top: 40px;">
+          <span ng-if="result.Fiyat>0">₺</span> {{result.Fiyat}}
+        </div>
+      </div>
+    </div>
+    <div ng-if="feed.results.length==0"><h3>Bu kategoride gönderi yok</h3></div>
+
+</ion-view>

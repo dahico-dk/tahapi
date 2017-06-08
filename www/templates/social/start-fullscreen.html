@@ -1,0 +1,25 @@
+<!-- View header bar is hidden using attribute 'hide-nav-bar="true"' -->
+<ion-view title="Lütfen giriş yapın" hide-nav-bar="true">
+
+  <!-- Splash background - refer to .gem-splash_background in css/style.css to change image -->
+  <ion-content class="gem-splash_background" scroll="false">
+    <div class="gem-form text-center">
+      <!-- Logo as you please -->
+      <div class="gem-splash-logo">
+        <img src="[LOGO LINK]" alt="Logo">
+        <h3 class="gem-white">Lütfen kullanmak için giriş yapın ...</h3>
+      </div>
+      <!-- end Logo -->
+
+      <!-- buttons. .button-rounded can be added for more roundness -->
+      <button class="button button-borderless button-rounded button-positive button-block" ng-click="login()">
+        <i class="icon ion-social-facebook-outline"></i>
+        Facebook ile giriş
+      </button>
+      <button class="button button-borderless button-rounded button-assertive button-block" ng-click="login2()">
+        <i class="icon ion-social-googleplus"></i>
+       Google ile giriş</button>
+
+    </div>
+  </ion-content>
+</ion-view>

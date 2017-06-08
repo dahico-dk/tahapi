@@ -1,0 +1,65 @@
+<ion-view title="Resimlerim" align-title="center">
+
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="secondary">
+      <a nav-transition="android" class="button" href="#/profil">
+        Geri
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="has-header gem-ion-content feed">
+    <h3>Görsel Sanat</h3>
+    <ion-refresher
+      pulling-text="Yenilemek için çekin..."
+      on-refresh="doRefresh()" >
+    </ion-refresher >
+
+    <div class="item item-input-inset">
+
+    </div>
+    <div ng-repeat="result in feed.results" style="margin-bottom:30px">
+      <div class="news-media">
+        <img ng-src="{{ result.Link }}" alt="" class="fluid-image">
+        <div class="media-social-stats">
+          <a class="button button-small button-borderless button-positive" ng-if="result.Onay"><i class="icon ion-checkmark"></i></a>
+          <a class="button button-small button-borderless button-positive" ng-if="!result.Onay"><i class="icon ion-power"></i></a>
+        </div>
+      </div>
+
+
+      <div class="news-item" >
+        <div class="news-thumb">
+          <img ng-src="{{ result.ProfilePic }}" alt="" class="img">
+        </div>
+        <div class="news-content">
+          <span class="news-comment-summary">
+    <i class="icon ion-star"></i><span id="ort3-{{result.FotoID}}">{{result.OP}}</span>/5
+      <i class="icon ion-person-add"></i><span id="pers3-{{result.FotoID}}">{{result.PV}}</span>
+      <i class="icon ion-ios-list"></i><span id="totp-{{result.FotoID}}">{{result.TP}}</span>
+    </span>
+          <h4>{{ result.Ad }}</h4>
+          <h4 ng-if="result.Ad.length<3">{{ result.Email | getname}}</h4>
+          <i class="icon ion-clock"></i>{{result.Tarih| jsDate |date:'dd MM yyyy'}}
+
+          <div class="gem-tiny-text news-item-stats">
+
+
+          </div>
+        </div>
+        <div class="news-more-action2" style="top: -10px; bottom: auto;top: -20px;top: 40px;">
+          <a class="button button-small button-borderless button-positive" id="talep3-{{result.FotoID}}" ng-click="openModal(result.Link,result.FotoID)" ng-if="!result.Dukkan">Satış Talep Et</a>
+      </div>
+
+    </div>
+      <div ng-if="feed.results.length==0"><h3>Bu kategoride gönderi yok</h3></div>
+    <ion-infinite-scroll ng-if="feed.hasMore" immediate-check="false" on-infinite="loadMore()">
+
+
+    </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>

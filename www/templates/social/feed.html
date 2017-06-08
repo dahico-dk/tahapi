@@ -1,0 +1,53 @@
+<!-- Title for the ion view -->
+<ion-view title="Resimler">
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <ion-content class="has-header gem-ion-content feed">
+  <ion-refresher
+  pulling-text="Yükleniyor..."
+  on-refresh="doRefresh()" >
+  </ion-refresher >
+
+  <div class="item item-input-inset">
+
+  </div>
+  <div ng-repeat="result in feed.results">
+  <div class="news-media">
+  <img ng-src="{{ result.Link }}" alt="" class="fluid-image">
+  <div class="media-social-stats">
+  <button class="button button-small button-borderless button-positive"><i class="icon ion-heart"></i></button>
+  </div>
+  </div>
+
+
+  <div class="news-item" >
+  <div class="news-thumb">
+  <img ng-src="{{ result.ProfilePic }}" alt="" class="img">
+  </div>
+  <div class="news-content">
+  <h4>{{ result.Ad }}</h4>
+  <h4>{{ result.katadi }}</h4>
+
+  <div class="gem-tiny-text news-item-stats">
+  <i class="icon ion-clock"></i> 2 days ago
+  <span class="news-comment-summary">
+  <i class="icon ion-heart"></i> 2
+  <i class="icon ion-chatbubble"></i> 3
+  </span>
+  </div>
+  </div>
+  <div class="news-more-action">
+  <i class="icon ion-more"></i>
+  </div>
+  </div>
+  </div>
+  <ion-infinite-scroll ng-if="feed.hasMore" immediate-check="false" on-infinite="loadMore()">
+
+
+  </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>

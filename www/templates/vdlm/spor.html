@@ -1,0 +1,89 @@
+
+
+<ion-view title="Videolarım" align-title="center" ng-controller="FeedPVideoController as controller">
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="secondary">
+      <a nav-transition="android" class="button" href="#/profil">
+        Geri
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="has-header gem-ion-content feed">
+    <h3>Spor</h3>
+
+
+    <div class="item item-input-inset">
+
+
+    </div>
+    <div ng-repeat="result in feed.results track by $index" style="padding-bottom:30px">
+      <div class="news-media">
+        <div  >
+          <div style="height: 300px">
+            <videogular vg-theme="controller.config.theme" vg-preload="auto" vgStartTime="-1" vg-clear-media-on-navigate="true">
+              <vg-media vg-native-fullscreen="false" vg-src="controller.config.sources[$index]"
+                        vg-tracks="controller.config.tracks">
+              </vg-media>
+
+              <vg-controls>
+
+                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                <vg-scrub-bar>
+                  <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                </vg-scrub-bar>
+                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                <vg-volume>
+                  <vg-mute-button></vg-mute-button>
+                  <vg-volume-bar></vg-volume-bar>
+                </vg-volume>
+                <vg-fullscreen-button></vg-fullscreen-button>
+              </vg-controls>
+
+
+              <vg-overlay-play></vg-overlay-play>
+
+
+            </videogular>
+
+          </div>
+        </div>
+        <div class="media-social-stats">
+
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-thumb">
+          <img ng-src="{{ result.ProfilePic }}" alt="" class="img">
+        </div>
+        <div class="news-content">
+          <h4>{{ result.Ad }}</h4>
+
+          <h4 ng-if="result.Ad.length<3">{{ result.Email | getname}}</h4>
+
+
+          <div class="gem-tiny-text news-item-stats">
+            <i class="icon ion-clock"></i> {{result.Tarih| jsDate |date:'dd MM yyyy'}}
+   <span class="news-comment-summary">
+            <i class="icon ion-star"></i><span id="ort-{{result.VideoID}}">{{result.OP}}</span>/5
+          <i class="icon ion-person-add"></i><span id="pers-{{result.VideoID}}">{{result.PV}}</span>
+            <i class="icon ion-ios-calculator"></i><span id="totp-{{result.VideoID}}">{{result.TP}}</span>
+           </span>
+          </div>
+        </div>
+        <div class="news-more-action" style="right:12px">
+          <a class="button button-small button-borderless button-positive" ng-if="result.Onay"><i class="icon ion-checkmark"></i></a>
+          <a class="button button-small button-borderless button-positive" ng-if="!result.Onay"><i class="icon ion-power"></i></a>
+
+
+        </div>
+      </div>
+    </div>
+
+    <div ng-if="feed.results.length==0"><h3>Bu kategoride gönderi yok</h3></div>
+  </ion-content>
+
+</ion-view>

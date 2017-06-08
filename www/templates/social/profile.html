@@ -1,0 +1,65 @@
+<!-- Title for header bar (refer to www/index.html) -->
+<ion-view title="Profilim" >
+
+  <ion-nav-bar class="bar-dark" align-title="center">
+    <ion-nav-buttons side="left">
+      <button ng-click="openMenu()" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-back-button class="button-clear"><i class="icon ion-ios7-arrow-back"></i>Geri</ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="has-header gem-ion-content">
+    <!-- ======================
+    GEMIONIC PROFILE SECTION
+    ====================== -->
+    <div class="gem-profile-media">
+      <div class="gem-profile-details">
+        <img ng-src="{{profile.profilepic}}" alt="" class="gem-circle profile-image">
+        <h3 class="gem-white">{{profile.profilename}}</h3>
+        <h5 class="gem-white">{{profile.email}}</h5>
+
+        <!-- ionic row - .profile-stats helps with transparency and white borders -->
+        <div class="row profile-stats">
+          <div class="col stat">
+            <h6 class="gem-white uppercase">Resim Sayısı</h6>
+            <h6 class="gem-white">{{profile.toplamresim}}</h6>
+          </div>
+          <div class="col stat">
+            <h6 class="gem-white uppercase">Video Sayısı</h6>
+            <h6 class="gem-white">{{profile.toplamvideo}}</h6>
+          </div>
+          <div class="col stat">
+            <h6 class="gem-white uppercase">Ürün Sayısı</h6>
+            <h6 class="gem-white">{{profile.toplamdukkan}}</h6>
+          </div>
+        </div>
+
+      </div>
+
+
+      <img src="img/gemionic/post-img.jpg" alt="" class="fluid-image profile-background-image">
+    </div>
+
+
+
+
+    <div class="list">
+       <a class="item item-icon-left" href="#/tabpp/spor">
+         <i class="icon ion-ios-camera"></i>
+         My Pictures
+       </a>
+      <a class="item item-icon-left" href="#/tabpv/spor">
+        <i class="icon ion-ios-videocam"></i>
+        Videolarım
+      </a>
+      <a class="item item-icon-left" href="#/tabdp/spor">
+        <i class="icon ion-images"></i>
+        My Products
+      </a>
+
+
+
+    </div>
+
+
+  </ion-content>
+</ion-view>

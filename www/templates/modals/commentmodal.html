@@ -1,0 +1,36 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Yorumlar</h1>
+    <div class="button button-clear" ng-click="commodal.hide()"><span class="icon ion-close"></span></div>
+  </ion-header-bar>
+  <ion-content>
+
+    <div class="article-comments padding">
+
+      <div class="comment-item" ng-repeat="result in commentpull.results">
+        <!-- thm -->
+        <img ng-src="{{result.ProfilePic}}" alt="" class="comment-profile-pic">
+
+        <!-- Yorum yazısı-->
+        <div class="comment-text">
+          <h4 >{{result.Ad}}</h4>
+          <h4 class="bold" ng-if="result.Ad.length<3">{{ result.Email | getname}}</h4>
+          <div class="comment-date"><i class="icon ion-clock"></i>  {{result.Tarih| jsDate |date:'dd MM yyyy'}} </div>
+          <div class="comment">
+            {{result.Yorum}}
+          </div>
+        </div>
+
+      </div>
+      <div class="comment-item" ng-if="commentpull.results.length==0">
+        <div class="comment-text">
+         <h4>Yorum yok</h4>
+        </div>
+      </div>
+
+
+
+    </div>
+
+  </ion-content>
+</ion-modal-view>

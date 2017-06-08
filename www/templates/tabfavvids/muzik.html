@@ -1,0 +1,108 @@
+<ion-view title="Favori Videolar" align-title="center" ng-controller="FavVidController2 as controller">
+
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button  class="button button-icon icon ion-camera" ng-click="showactvid()"></button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="has-header gem-ion-content feed">
+
+<h3>Müzik</h3>
+    <ion-refresher
+      pulling-text="Yenilemek için çekin..."
+      on-refresh="doRefresh()" >
+    </ion-refresher >
+    <div class="item item-input-inset">
+
+    </div>
+    <div ng-repeat="result in feed.results track by $index" style="padding-bottom:30px">
+      <div class="news-media">
+        <div  >
+          <div style="height: 300px">
+            <videogular vg-theme="controller.config.theme" vgStartTime="-1" vg-clear-media-on-navigate="true">
+              <vg-media vg-src="controller.config.sources[$index]"
+                        vg-tracks="controller.config.tracks">
+              </vg-media>
+
+              <vg-controls>
+
+                <vg-time-display>{{ currentTime | date:'mm:ss':'+0000' }}</vg-time-display>
+                <vg-scrub-bar>
+                  <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+                </vg-scrub-bar>
+                <vg-time-display>{{ timeLeft | date:'mm:ss':'+0000' }}</vg-time-display>
+                <vg-volume>
+                  <vg-mute-button></vg-mute-button>
+                  <vg-volume-bar></vg-volume-bar>
+                </vg-volume>
+                <vg-fullscreen-button></vg-fullscreen-button>
+              </vg-controls>
+
+
+              <vg-overlay-play></vg-overlay-play>
+
+              <vg-poster vg-url='result.fpl[$index]'></vg-poster>
+              <vg-buffering></vg-buffering>
+            </videogular>
+
+          </div>
+        </div>
+        <div class="media-social-stats">
+
+        </div>
+      </div>
+      <div class="news-item">
+        <div class="news-thumb">
+          <img ng-src="{{ result.ProfilePic }}" alt="" class="img">
+        </div>
+        <div class="news-content">
+          <h4>{{ result.Ad }}</h4>
+
+          <h4 ng-if="result.Ad.length<3">{{ result.Email | getname}}</h4>
+
+
+          <div class="gem-tiny-text news-item-stats">
+            <i class="icon ion-clock"></i> {{result.Tarih| jsDate |date:'dd MM yyyy'}}
+   <span class="news-comment-summary">
+            <i class="icon ion-star"></i><span id="ortmvf-{{result.VideoID}}">{{result.OP}}</span>/5
+          <i class="icon ion-person-add"></i><span id="persmvf-{{result.VideoID}}">{{result.PV}}</span>
+            <i class="icon ion-ios-calculator"></i><span id="totpmvf-{{result.VideoID}}">{{result.TP}}</span>
+           </span>
+          </div>
+        </div>
+        <div class="news-more-action" style="right:12px">
+          <button class="button button-small button-borderless button-positive" ng-if="result.PB==0" id="likermvf-{{result.VideoID}}" ng-click="openModal(result.VideoID)"><i class="icon ion-star"></i></button>
+
+        </div>
+        <div class="news-more-action4" style="right:12px">
+
+          <button class="button button-small button-borderless button-energized" style="float:left" id="commenterm-{{result.VideoID}}" ng-click="opencomModal(result.VideoID)"><i class="icon ion-chatbubbles" > <span id="commenttotalmvf-{{result.VideoID}}">{{result.CommentCount}}</span> </i></button>
+
+        </div>
+      </div>
+      <div class="gem-edit-section">
+        <div class="gem-poster">
+
+          <div>
+            <textarea placeholder="Yorumunuzu girin" id="commentmvf-{{result.VideoID}}"></textarea>
+          </div>
+
+
+        </div>
+
+        <button class="button button-small button-block button-calm" ng-click="sendComment(result.VideoID)">
+          <i class="icon ion-paper-airplane">&nbsp;&nbsp;&nbsp;Gönder</i>
+        </button>
+      </div>
+    </div>
+    <div ng-if="feed.results.length==0"><h3>Bu kategoride gönderi yok</h3></div>
+    <ion-infinite-scroll ng-if="feed.hasMore" immediate-check="false" on-infinite="loadMore()">
+
+
+    </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>

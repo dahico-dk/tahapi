@@ -1,0 +1,67 @@
+<!-- Title for the ion view -->
+<ion-view title="Videolar">
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <ion-content class="has-header gem-ion-content" overflow-scroll="true" data-tap-disable="true" ng-controller="FeedVideoControllerAll as controller">
+
+    <ion-refresher
+      pulling-text="Yükleniyor..."
+      on-refresh="doRefresh()" >
+    </ion-refresher >
+    <div ng-repeat="result in feed.results track by $index" style="padding-bottom:30px">
+    <div class="news-media">
+      <div  >
+        <div>
+          <videogular vg-theme="controller.config.theme" vg-preload="auto" vgStartTime="-1">
+            <vg-media vg-src="controller.config.sources[$index]"
+                      vg-tracks="controller.config.tracks">
+            </vg-media>
+
+            <vg-controls>
+              <vg-scrub-bar>
+                <vg-scrub-bar-current-time></vg-scrub-bar-current-time>
+              </vg-scrub-bar>
+              <vg-fullscreen-button></vg-fullscreen-button>
+            </vg-controls>
+
+            <vg-overlay-play></vg-overlay-play>
+
+          </videogular>
+        </div>
+      </div>
+      <div class="media-social-stats">
+        <button class="button button-small button-borderless button-positive"><i class="icon ion-heart"></i></button>
+      </div>
+    </div>
+    <div class="news-item">
+      <div class="news-thumb">
+        <img ng-src="{{ result.ProfilePic }}" alt="" class="img">
+      </div>
+      <div class="news-content">
+        <h4>{{ result.Ad }}</h4>
+        <h4>{{ result.katadi }}</h4>
+
+        <div class="gem-tiny-text news-item-stats">
+          <i class="icon ion-clock"></i> 2 days ago
+    <span class="news-comment-summary">
+    <i class="icon ion-heart"></i> 2
+    <i class="icon ion-chatbubble"></i> 3
+    </span>
+        </div>
+      </div>
+      <div class="news-more-action">
+        <i class="icon ion-more"></i>
+      </div>
+    </div>
+    </div>
+
+
+
+//infinite scroll cektikce yukler
+    <ion-infinite-scroll ng-if="feed.hasMore" immediate-check="false" on-infinite="loadMore()">
+  </ion-content>
+
+</ion-view>

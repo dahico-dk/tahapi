@@ -1,0 +1,83 @@
+<ion-view title="Bütün Resimler" align-title="center">
+
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+    </ion-nav-buttons>
+    <ion-nav-buttons side="right">
+      <button  class="button button-icon icon ion-camera" ng-click="showact2()"></button>
+    </ion-nav-buttons>
+
+  </ion-nav-bar>
+
+  <ion-content class="has-header gem-ion-content feed">
+    <h3>Görsel</h3>
+    <ion-refresher
+      pulling-text="Yenilemek için çekin..."
+      on-refresh="doRefresh()" >
+    </ion-refresher >
+
+    <div class="item item-input-inset">
+
+    </div>
+    <div ng-repeat="result in feed.results track by $index" style="padding-bottom:15px">
+      <div class="news-media">
+        <img ng-src="{{ result.Link }}" alt="" class="fluid-image">
+        <div class="media-social-stats">
+          <button class="button button-small button-borderless button-positive" ng-if="result.PB==0" id="likerg-{{result.FotoID}}" ng-click="openModal(result.FotoID)"><i class="icon ion-star"></i></button>
+          <button class="button button-small button-borderless button-balanced" ng-if="result.PB>0" id="checker-{{result.FotoID}}"><i class="icon ion-checkmark-round" ></i></button>
+
+        </div>
+        <div class="media-social-stats2">
+
+          <button class="button button-small button-borderless button-energized" style="float:left" id="commenterg-{{result.FotoID}}" ng-click="opencomModal(result.FotoID)"><i class="icon ion-chatbubbles" > <span id="commenttotalg-{{result.FotoID}}">{{result.CommentCount}}</span> </i></button>
+        </div>
+      </div>
+
+
+      <div class="news-item" >
+        <div class="news-thumb">
+          <img ng-src="{{ result.ProfilePic }}" alt="" class="img">
+        </div>
+        <div class="news-content">
+          <span class="news-comment-summary">
+            <i class="icon ion-star"></i><span id="ortg-{{result.FotoID}}">{{result.OP}}</span>/5
+          <i class="icon ion-person-add"></i><span id="persg-{{result.FotoID}}">{{result.PV}}</span>
+            <i class="icon ion-ios-calculator"></i><span id="totpg-{{result.FotoID}}">{{result.TP}}</span>
+           </span>
+          <h4>{{ result.Ad }}</h4>
+          <h4 ng-if="result.Ad.length<3">{{ result.Email | getname}}</h4>
+
+          <div class="gem-tiny-text news-item-stats">
+            <i class="icon ion-clock"></i> {{result.Tarih| jsDate |date:'dd MM yyyy'}}
+
+          </div>
+
+        </div>
+
+      </div>
+      <div class="gem-edit-section">
+        <div class="gem-poster">
+
+
+
+          <div>
+            <textarea placeholder="Yorumunuzu girin" id="commentg-{{result.FotoID}}"></textarea>
+          </div>
+
+
+        </div>
+
+        <button class="button button-small button-block button-calm" ng-click="sendComment(result.FotoID)">
+          <i class="icon ion-paper-airplane">&nbsp;&nbsp;&nbsp;Gönder</i>
+        </button>
+      </div>
+    </div>
+    <div ng-if="feed.results.length==0"><h3>Bu kategoride gönderi yok</h3></div>
+    <ion-infinite-scroll ng-if="feed.hasMore" immediate-check="false" on-infinite="loadMore()">
+
+
+    </ion-infinite-scroll>
+  </ion-content>
+
+</ion-view>

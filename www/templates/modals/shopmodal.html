@@ -1,0 +1,36 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Satış isteği</h1>
+    <div class="button button-clear" ng-click="modal.hide()"><span class="icon ion-close"></span></div>
+  </ion-header-bar>
+  <ion-content>
+
+
+
+    <ion-card>
+
+      <ion-card-content>
+        <img ng-src="{{link}}" class="centerimg" style="width:40%;height:40%"/>
+        <ion-card-title>
+
+        </ion-card-title>
+
+        <label class="item item-input">
+          <input type="text" placeholder="Telefon(Opsiyonel)" ng-model="telefon">
+        </label>
+        <label class="item item-input">
+          <input type="text" placeholder="Fiyat(Gerekli)" ng-model="fiyat">
+        </label>
+
+      </ion-card-content>
+    </ion-card>
+
+
+
+
+
+    <button class="button button-full button-calm" ng-show="fiyat.length>0" ng-click="satistalep(fotoid,telefon,fiyat)">
+      Request Sale
+    </button>
+  </ion-content>
+</ion-modal-view>
