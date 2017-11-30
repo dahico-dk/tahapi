@@ -1,7 +1,7 @@
 # tahapi
 
 
-Tahapi solo olarak 2 hafta gibi kısıtlı bir sürede solo yazılmış bir IONIC(1.x)-android projesidir. Dosya büyüklüğünü küçültmek için android platformu kaldırılmıştır. Denemeden önce android platformu eklenmelidir. 
+Tahapi 2 hafta gibi kısıtlı bir sürede solo yazılmış bir IONIC(1.x)-android projesidir. Dosya büyüklüğünü küçültmek için android platformu kaldırılmıştır. Denemeden önce android platformu eklenmelidir. 
 
 
 
