@@ -24,7 +24,7 @@ $cordovaOauth.facebook("[FACEBOOK_API_KEY]", ["email", "user_website", "user_loc
  $cordovaOauth.google("[GOOGLE_API_KEY]", ["email"]).then(function(result) {...
 ```
 
-Uygulama verilerini bir api sunucusundan çeker. Api kodları ayrı bir proje olarak paylaşılacaktır. Her şartta api'den veirler $http.get ile çekilir. Dolayısıyla gerekli web adresinin WEB-API-SUNUCUSU yazan yerlere eklenmesi gerekmektedir.
+Uygulama verilerini bir api sunucusundan çeker. Her şartta api'den veriler $http.get ile çekilir. Dolayısıyla gerekli web adresinin WEB-API-SUNUCUSU yazan yerlere eklenmesi gerekmektedir.
 
 ```
 $http.get('[WEB-API-SUNUCUSU]', {params: para})...
