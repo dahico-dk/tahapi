@@ -32,4 +32,4 @@ $http.get('[WEB-API-SUNUCUSU]', {params: para})...
 
 Proje aslen referans niteliğindedir. Çok kısıtlı sürede ve başlangıçta kütüphane ve dil bilinmeden, süreç boyunca öğrenilerek yazılmıştır. 
 
-IOS üzerinde hiç denenmemiştir.
+IOS platformu üzerinde hiç denenmemiştir.
