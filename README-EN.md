@@ -29,5 +29,4 @@ $http.get('[WEB-API-SERVER]', {params: para})...
 
 Project is developed in very limited time with zero knowledge of library. 
 
-Never tested on ips
-
+Never tested on IOS
