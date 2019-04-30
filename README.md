@@ -6,7 +6,7 @@ Tahapi is an IONIC android app which has written in 2 weeks with IONIC(1.x) with
 //adding android platform cli code
 $ ionic cordova add android
 ```
-Crosswalk bugs can be seen because of the latest updates on IONIC CLI and version changes. This project actually added the github as a code reference. A working version of project resides on google play.
+Crosswalk bugs can be seen because of the latest updates on IONIC CLI and version changes. This project actually added to the github as a code reference. A working version of project resides on google play.
 
 App's main purpose is listing images and videos which acquired from an web api as JSON. Users can comment and rate these pictures and videos. Also users can upload images or videos from  to server from their device galleries or taking them on fly. Big videos are compressed with Cordova-Video-Plugin on the background.
 
