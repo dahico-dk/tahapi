@@ -1,3 +1,4 @@
+# DEPRECATED
 # tahapi
 
 Tahapi is an IONIC android app which has written in 2 weeks with IONIC(1.x) with zero IONIC knowledge. Android platform files has been removed for reducing the file size. One must add android platform to project before testing.
